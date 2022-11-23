@@ -1,2 +1,2 @@
 # Visualization-exercises
-Practice visualization
+Learning exercises about visualization
