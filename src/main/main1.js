@@ -11,21 +11,38 @@ const camera = new Three.PerspectiveCamera(75, window.innerWidth/window.innerHei
 camera.position.set(0,0,10)
 scene.add(camera)
 
-
-
-// 导入纹理
-// const textureLoader = new Three.TextureLoader()
-// const doorColorTexture = textureLoader.load('./textures/door/color.jpg')
-
 // 添加物体
-const cubeGeometry = new Three.BoxBufferGeometry(1,1,1)
-const basicMaterial = new Three.MeshBasicMaterial({
-  color: '#ffff00',
-  // map: doorColorTexture
-})
-const cube = new Three.Mesh(cubeGeometry, basicMaterial)
-scene.add(cube)
+// 创建几何体
 
+for(let i = 0; i < 50; i++) {
+  const geometry = new Three.BufferGeometry()
+  const vertices = new Float32Array(9)
+  for(let j = 0; j < 9; j++) {
+    vertices[j] = Math.random() * 10 - 5
+  }
+  geometry.setAttribute('position', new Three.BufferAttribute(vertices, 3))
+  let color = new Three.Color(Math.random(),Math.random(), Math.random())
+  const material = new Three.MeshBasicMaterial({
+    color,
+    transparent: true,
+    opacity: 0.5
+  })
+
+  const mesh = new Three.Mesh(geometry, material)
+
+  scene.add(mesh)
+}
+// const geometry = new Three.BufferGeometry()
+// const vertices = new Float32Array([
+//   -1.0,-1.0,1.0,1.0,-1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,-1.0,1.0,1.0,-1.0,-1.0,1.0
+// ])
+// geometry.setAttribute('position', new Three.BufferAttribute(vertices, 3))
+
+// const material = new Three.MeshBasicMaterial({color: 0xffff00})
+
+// const mesh = new Three.Mesh(geometry, material)
+
+// scene.add(mesh)
 
 // 初始化渲染器
 const renderer = new Three.WebGLRenderer()
