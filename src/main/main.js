@@ -14,14 +14,14 @@ scene.add(camera)
 
 
 // 导入纹理
-// const textureLoader = new Three.TextureLoader()
-// const doorColorTexture = textureLoader.load('./textures/door/color.jpg')
+const textureLoader = new Three.TextureLoader()
+const doorColorTexture = textureLoader.load('./textures/door/color.jpg')
 
 // 添加物体
-const cubeGeometry = new Three.BoxBufferGeometry(1,1,1)
+const cubeGeometry = new Three.BoxBufferGeometry(2,2,2)
 const basicMaterial = new Three.MeshBasicMaterial({
   color: '#ffff00',
-  // map: doorColorTexture
+  map: doorColorTexture
 })
 const cube = new Three.Mesh(cubeGeometry, basicMaterial)
 scene.add(cube)
