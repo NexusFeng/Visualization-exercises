@@ -36867,6 +36867,18 @@ scene.add(camera);
 // 导入纹理
 var textureLoader = new Three.TextureLoader();
 var doorColorTexture = textureLoader.load('./textures/door/color.jpg');
+console.log(doorColorTexture, 'door');
+
+// 纹理属性
+// doorColorTexture.offset.x = 0.5
+// doorColorTexture.offset.set(0.5, 0.5)
+// doorColorTexture.center.set(0.5, 0.5)
+// doorColorTexture.rotation = Math.PI / 4
+doorColorTexture.repeat.set(2, 3); // 水平、竖直重复次数
+
+// // 重复模式
+doorColorTexture.wrapS = Three.MirroredRepeatWrapping;
+doorColorTexture.wrapT = Three.RepeatWrapping;
 
 // 添加物体
 var cubeGeometry = new Three.BoxBufferGeometry(2, 2, 2);
@@ -36938,7 +36950,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60524" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54602" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

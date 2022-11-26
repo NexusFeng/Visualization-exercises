@@ -17,6 +17,19 @@ scene.add(camera)
 const textureLoader = new Three.TextureLoader()
 const doorColorTexture = textureLoader.load('./textures/door/color.jpg')
 
+console.log(doorColorTexture, 'door')
+
+// 纹理属性
+// doorColorTexture.offset.x = 0.5
+// doorColorTexture.offset.set(0.5, 0.5)
+// doorColorTexture.center.set(0.5, 0.5)
+// doorColorTexture.rotation = Math.PI / 4
+doorColorTexture.repeat.set(2, 3)// 水平、竖直重复次数
+
+// // 重复模式
+doorColorTexture.wrapS = Three.MirroredRepeatWrapping
+doorColorTexture.wrapT = Three.RepeatWrapping
+
 // 添加物体
 const cubeGeometry = new Three.BoxBufferGeometry(2,2,2)
 const basicMaterial = new Three.MeshBasicMaterial({
